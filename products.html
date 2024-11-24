@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" href="product_styles.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav class="navbar">
+            <h1 class="logo">Machining Tools Store</h1>
+            <ul class="nav-links">
+                <li><a href="index.html" >Home</a></li>
+                <li><a href="products.html" >Products</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Product List Section -->
+    <section class="product-section">
+        <h2>Available Tools</h2>
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product">
+                <img src="C:\Users\rathn\OneDrive\Desktop\e-commerce\image\lathe-cutting-tools-types-optimized.webp" alt="Turning Tools">
+                <h3>Turning Tools</h3>
+                <p>High-quality turning tools for precision machining.</p>
+                <button>Add to Cart</button>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product">
+                <img src="C:\Users\rathn\OneDrive\Desktop\e-commerce\image\threading-tools.webp" alt="Threading Tools">
+                <h3>Threading Tools</h3>
+                <p>Reliable threading tools for all your threading needs.</p>
+                <button>Add to Cart</button>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product">
+                <img src="C:\Users\rathn\OneDrive\Desktop\e-commerce\image\high speed milling tools.jpg" alt="High-Feed Milling Tools">
+                <h3>High-Feed Milling Tools</h3>
+                <p>Efficient tools for high-speed material removal.</p>
+                <button>Add to Cart</button>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product">
+                <img src="C:\Users\rathn\OneDrive\Desktop\e-commerce\image\modular_rotating_tools.jpg" alt="Modular Rotating Tools">
+                <h3>Modular Rotating Tools</h3>
+                <p>Customizable tools for versatile machining.</p>
+                <button>Add to Cart</button>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product">
+                <img src="C:\Users\rathn\OneDrive\Desktop\e-commerce\image\solid round tools_png.webp" alt="Solid Round Tools">
+                <h3>Solid Round Tools</h3>
+                <p>Durable solid round tools for reliable operations.</p>
+                <button>Add to Cart</button>
+            </div>
+
+            <!-- Add more products here -->
+            <!-- Examples -->
+            <div class="product">
+                <img src="C:\Users\rathn\OneDrive\Desktop\e-commerce\image\Thread milling cutters.webp" alt="Thread Milling Tools">
+                <h3>Thread Milling Tools</h3>
+                <p>Precision tools for thread milling applications.</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="C:\Users\rathn\OneDrive\Desktop\e-commerce\image\metalworking-carbide-inserts.webp" alt="Carbide Inserts">
+                <h3>Carbide Inserts</h3>
+                <p>Replaceable inserts for cost-effective cutting.</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="C:\Users\rathn\OneDrive\Desktop\e-commerce\image\various-many-type-new-high-260nw-1991491919.jpg" alt="Spindle Toolings">
+                <h3>Spindle Toolings</h3>
+                <p>Advanced tooling systems for CNC machines.</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+    </section>
+    <script>
+               // Handle adding item to cart from products page
+const addToCartButtons = document.querySelectorAll('.product button');
+
+addToCartButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
+        const productElement = event.target.closest('.product');
+        const productId = productElement.querySelector('h3').textContent;
+        const productImage = productElement.querySelector('img').src;
+        const productPrice = parseFloat(productElement.querySelector('p').textContent.replace('$', '').trim());
+
+        const product = {
+            id: productId,
+            name: productId,
+            price: productPrice,
+            image: productImage
+        };
+
+        // Add the product to the cart array
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push(product);
+
+        // Save the cart in localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // Show an alert or update cart icon
+        alert(`${productId} added to cart!`);
+    });
+});
+</script>
+</body>
+</html>
